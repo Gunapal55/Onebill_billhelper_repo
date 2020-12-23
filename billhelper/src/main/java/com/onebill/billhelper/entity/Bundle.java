@@ -2,6 +2,7 @@ package com.onebill.billhelper.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -44,24 +48,24 @@ public class Bundle {
 	private String bundleDuration;
 
 	@NotNull
-	@Size(min = 1, max = 11)
 	@Column(name = "bndl_amout")
-	private double bundleAmount;
+	private Double bundleAmount;
 
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "prd_id")
 	private Products products;
 
-	@OneToMany(mappedBy = "bundle")
-	@JsonIgnore
+	@OneToMany(mappedBy = "bundle", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<BundleDetails> details;
 
-	@OneToMany(mappedBy = "bundle")
-	@JsonIgnore
+	@OneToMany(mappedBy = "bundle", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<OverDue> due;
 
-	@OneToMany(mappedBy = "bundle")
-	@JsonIgnore
+	@OneToMany(mappedBy = "bundle", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<AddtionalCharges> addCharges;
 
 }

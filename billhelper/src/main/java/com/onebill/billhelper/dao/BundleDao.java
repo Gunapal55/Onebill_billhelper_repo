@@ -37,12 +37,12 @@ public interface BundleDao {
 
 	public OverDueDto getOverDueById(int overDueId);
 
-	public AdditionalChargesDto addAddtionalCharges(AdditionalChargesDto addtional);
+	public AdditionalChargesDto addAdditionalCharges(AdditionalChargesDto additional);
 
-	public AdditionalChargesDto updateAddtionalCharges(AdditionalChargesDto addtional);
+	public AdditionalChargesDto updateAdditionalCharges(AdditionalChargesDto additional);
 
-	public AdditionalChargesDto deleteAddtionalCharges(AdditionalChargesDto addtional);
+	public AdditionalChargesDto deleteAdditionalCharges(AdditionalChargesDto additional);
 
-	public AdditionalChargesDto getAddtionalChargesById(int addtionalId);
+	public AdditionalChargesDto getAdditionalChargesById(int additionalId);
 
 }

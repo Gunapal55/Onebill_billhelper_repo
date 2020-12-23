@@ -10,10 +10,10 @@ public interface ProductsDao {
 	
 	public ProductsDto updateProduct(ProductsDto product);
 	
-	public ProductsDto removeProduct(ProductsDto product);
-	
 	public List<ProductsDto> getAllProduct();
 	
 	public ProductsDto getProductById(int productId);
+
+	public ProductsDto removeProduct(int productId);
 	
 }

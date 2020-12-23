@@ -25,62 +25,85 @@ public class BundleServiceImplementation implements BundleService {
 	@Override
 	public BundleDto createBundle(BundleDto bundle) {
 
-		BundleDto addBundle = bundledao.createBundle(bundle);
+		BundleDto addBundle = null;
+		try {
+			addBundle = bundledao.createBundle(bundle);
+		
 		if (addBundle != null) {
 			return addBundle;
 		} else {
-			throw new BillhelperException("Record already exists");
+			throw new BillhelperException("Unable to add create bundle new bundle");
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("Cannot create bundle for "+bundle.getBundleDescription()+" of duration "+bundle.getBundleDuration()+" and for amount of "+bundle.getBundleAmount());
 	}
+}
 
 	@Override
 	public BundleDto updateBundle(BundleDto bundle) {
-		BundleDto updateBundle = bundledao.updateBundle(bundle);
+		BundleDto updateBundle = null;
+		try {
+			updateBundle = bundledao.updateBundle(bundle);
 		if (updateBundle != null) {
-
 			return updateBundle;
 
 		} else {
-			throw new BillhelperException("No matching record found for update");
+			throw new BillhelperException("Unable to update for given bundle id: "+bundle.getBundleId()+" and bundle description "+bundle.getBundleDescription()+" for amount of "+bundle.getBundleAmount());
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("Unable to update for given bundle id: "+bundle.getBundleId()+" and bundle description "+bundle.getBundleDescription()+" for amount of "+bundle.getBundleAmount());
+		
 	}
-
+ }
+	
 	@Override
 	public BundleDto removeBundle(BundleDto bundle) {
-		BundleDto removeBundle = bundledao.removeBundle(bundle);
-		if (removeBundle != null) {
-
+		BundleDto removeBundle = null;
+		try {
+			removeBundle = bundledao.removeBundle(bundle);
+				if (removeBundle != null) {
 			return removeBundle;
 
 		} else {
-			throw new BillhelperException("No matching data found to remove");
+			throw new BillhelperException("Unable to remove the bunle with id: "+bundle.getBundleId()+" and bundle description "+bundle.getBundleDescription()+" for amount of "+bundle.getBundleAmount());
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("Unable to remove the bunle with id: "+bundle.getBundleId()+" and bundle description "+bundle.getBundleDescription()+" for amount of "+bundle.getBundleAmount());
 	}
-
+}
+	
 	@Override
 	public List<BundleDto> getAllBundle() {
-		List<BundleDto> bundleList = bundledao.getAllBundle();
-		if (bundleList != null) {
-
-			return bundleList;
-
+		List<BundleDto> bundleList =null;
+		try {
+			bundleList =  bundledao.getAllBundle();
+				if (bundleList != null) {
+					return bundleList;	
 		} else {
-			throw new BillhelperException("No plans found");
-
+			throw new BillhelperException("No bundle found to disply please create new one's");
+			
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("No bundle found to disply please create new one's");
 	}
+ }
 
 	@Override
 	public BundleDto getBundleById(int bundleId) {
-		BundleDto bundle = bundledao.getBundleById(bundleId);
+		BundleDto bundle =null;
+		try {
+			bundle =  bundledao.getBundleById(bundleId);
+		
 		if (bundle != null) {
 			return bundle;
 
 		} else {
-			throw new BillhelperException("No plans found");
-
+			throw new BillhelperException("Unable to find the bundle for the given bundle id "+bundleId);
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("Unable to find the bundle for the given bundle id "+bundleId);
 	}
+  }
 
 	@Override
 	public BundleDetailsDto addBundleDetails(BundleDetailsDto bundleDetail) {
@@ -120,37 +143,55 @@ public class BundleServiceImplementation implements BundleService {
 
 	@Override
 	public List<BundleDetailsDto> getAllBundleDetails() {
-		List<BundleDetailsDto> bundleDetailList = bundledao.getAllBundleDetails();
+		List<BundleDetailsDto> bundleDetailList = null;
+		try {
+		bundleDetailList = bundledao.getAllBundleDetails();	
+		
 		if (bundleDetailList != null) {
 
 			return bundleDetailList;
 
 		} else {
-			throw new BillhelperException("No plans found");
-
+			throw new BillhelperException("No bundle found to disply please create new one's");
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("No bundle found to disply please create new one's");
 	}
+ }
 
 	@Override
 	public BundleDetailsDto getBundleDetailById(int bundleDetailId) {
-		BundleDetailsDto bundleDetail = bundledao.getBundleDetailById(bundleDetailId);
+		BundleDetailsDto bundleDetail = null;
+		try {
+			bundleDetail =bundledao.getBundleDetailById(bundleDetailId);
+		
 		if (bundleDetail != null) {
 			return bundleDetail;
 
 		} else {
-			throw new BillhelperException("No plans found");
+			throw new BillhelperException("No details found for the given id: "+bundleDetailId);
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("No details found for the given id: "+bundleDetailId);
+		
 	}
-
+  }
 	@Override
 	public OverDueDto addOverDue(OverDueDto overDue) {
-		OverDueDto addDue = bundledao.addOverDue(overDue);
+		OverDueDto addDue = null;
+		try {
+			addDue =bundledao.addOverDue(overDue);
+			
 		if (addDue != null) {
 			return addDue;
 		} else {
-			throw new BillhelperException("Please add due");
+			throw new BillhelperException("Unable to create overdue for over due type"+overDue.getChargeType()+" and for amount "+overDue.getChargeAmount());
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("Unable to create overdue for over due type"+overDue.getChargeType()+" and for amount "+overDue.getChargeAmount());
 	}
+	}
+
 
 	@Override
 	public OverDueDto updateOverDue(OverDueDto overDue) {
@@ -188,8 +229,8 @@ public class BundleServiceImplementation implements BundleService {
 	}
 
 	@Override
-	public AdditionalChargesDto addAddtionalCharges(AdditionalChargesDto addtional) {
-		AdditionalChargesDto addAddCharges = bundledao.addAddtionalCharges(addtional);
+	public AdditionalChargesDto addAdditionalCharges(AdditionalChargesDto additional) {
+		AdditionalChargesDto addAddCharges = bundledao.addAdditionalCharges(additional);
 		if (addAddCharges != null) {
 			return addAddCharges;
 		} else {
@@ -198,8 +239,8 @@ public class BundleServiceImplementation implements BundleService {
 	}
 
 	@Override
-	public AdditionalChargesDto updateAddtionalCharges(AdditionalChargesDto addtional) {
-		AdditionalChargesDto updateAddCharges = bundledao.updateAddtionalCharges(addtional);
+	public AdditionalChargesDto updateAddtionalCharges(AdditionalChargesDto additional) {
+		AdditionalChargesDto updateAddCharges = bundledao.updateAdditionalCharges(additional);
 		if (updateAddCharges != null) {
 
 			return updateAddCharges;
@@ -211,9 +252,9 @@ public class BundleServiceImplementation implements BundleService {
 	}
 
 	@Override
-	public AdditionalChargesDto deleteAddtionalCharges(AdditionalChargesDto addtional) {
-		if (addtional != null) {
-			return addtional;
+	public AdditionalChargesDto deleteAdditionalCharges(AdditionalChargesDto additional) {
+		if (additional != null) {
+			return additional;
 
 		} else {
 			throw new BillhelperException("No matching data found to remove");
@@ -222,13 +263,18 @@ public class BundleServiceImplementation implements BundleService {
 	}
 
 	@Override
-	public AdditionalChargesDto getAddtionalChargesById(int addtionalId) {
-		AdditionalChargesDto addDetails = bundledao.getAddtionalChargesById(addtionalId);
+	public AdditionalChargesDto getAdditionalChargesById(int additionalId) {
+		AdditionalChargesDto addDetails = null;
+		try {
+			addDetails = bundledao.getAdditionalChargesById(additionalId);
 		if (addDetails != null) {
 			return addDetails;
+		}else {
+			throw new BillhelperException("No details found for the given id: "+additionalId);
 
-		} else {
-			throw new BillhelperException("No data found");
 		}
+	}catch(Exception e) {
+		throw new BillhelperException("No details found for the given id: "+additionalId);
 	}
+}
 }

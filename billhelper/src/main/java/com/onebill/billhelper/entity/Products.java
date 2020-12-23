@@ -1,7 +1,9 @@
 package com.onebill.billhelper.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import lombok.Data;
 
@@ -27,7 +30,7 @@ public class Products {
 	private int productId;
 
 	@NotNull
-    @Size(min = 1, max = 45)
+	@Size(min = 1, max = 45)
 	@Column(name = "prd_name")
 	private String productName;
 
@@ -36,8 +39,8 @@ public class Products {
 	@Column(name = "prd_type")
 	private String productType;
 
-	@OneToMany(mappedBy = "products")
-	@JsonIgnore
-	private List<Bundle> bundle;
+	@OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Bundle> bundle = new ArrayList<Bundle>();
 
 }

@@ -137,26 +137,26 @@ class BundleServiceTest {
 	}
 
 	@Test
-	void testAddAddtionalCharges() {
-		AdditionalChargesDto additionalCharge = bundleService.addAddtionalCharges(addChargesDto);
+	void testAddAdditionalCharges() {
+		AdditionalChargesDto additionalCharge = bundleService.addAdditionalCharges(addChargesDto);
 		assertEquals(additionalCharge.getChargeType(), addChargesDto.getChargeType());
 	}
 
 	@Test
-	void testUpdateAddtionalCharges() {
+	void testUpdateAdditionalCharges() {
 		AdditionalChargesDto additionalCharge = bundleService.updateAddtionalCharges(addChargesDto);
 		assertNotEquals(addChargesDto, additionalCharge);
 	}
 
 	@Test
-	void testDeleteAddtionalCharges() {
-		AdditionalChargesDto additionalCharge = bundleService.deleteAddtionalCharges(addChargesDto);
+	void testDeleteAdditionalCharges() {
+		AdditionalChargesDto additionalCharge = bundleService.deleteAdditionalCharges(addChargesDto);
 		assertEquals(addChargesDto.getChargeType(), additionalCharge.getChargeType());
 	}
 
 	@Test
-	void testGetAddtionalChargesById() {
-		AdditionalChargesDto additionalCharge = bundleService.getAddtionalChargesById(1);
+	void testGetAdditionalChargesById() {
+		AdditionalChargesDto additionalCharge = bundleService.getAdditionalChargesById(1);
 		assertEquals(1, additionalCharge.getChargeId());
 	}
 

@@ -43,11 +43,11 @@ class ProductServiceTest {
 		assertEquals(product.getProductName(), productDto.getProductName());
 	}
 
-	@Test
-	void testRemoveProducts() {
-		ProductsDto product = productService.removeProduct(productDto);
-		assertEquals(productDto.getProductName(), product.getProductName());
-	}
+//	@Test
+//	void testRemoveProducts() {
+//		ProductsDto product = productService.removeProduct(productDto);
+//		assertEquals(productDto.getProductName(), product.getProductName());
+//	}
 
 	@Test
 	void testUpdateProducts() {

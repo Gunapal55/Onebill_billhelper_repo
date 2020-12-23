@@ -133,30 +133,30 @@ public class BundleController {
 	}
 
 	@PostMapping("/additional")
-	public ResponseDto addAddtionalCharge(@RequestBody AdditionalChargesDto addtional) {
+	public ResponseDto addAddtionalCharge(@RequestBody AdditionalChargesDto additional) {
 		ResponseDto response = new ResponseDto();
-		response.setData(service.addAddtionalCharges(addtional));
+		response.setData(service.addAdditionalCharges(additional));
 		return response;
 	}
 
 	@PutMapping("/additional")
-	public ResponseDto updateAddtionalCharges(@RequestBody AdditionalChargesDto addtional) {
+	public ResponseDto updateAddtionalCharges(@RequestBody AdditionalChargesDto additional) {
 		ResponseDto response = new ResponseDto();
-		response.setData(service.addAddtionalCharges(addtional));
+		response.setData(service.addAdditionalCharges(additional));
 		return response;
 	}
 
 	@DeleteMapping("/additional")
-	public ResponseDto removeAddtionalCharges(@RequestBody AdditionalChargesDto addtional) {
+	public ResponseDto removeAddtionalCharges(@RequestBody AdditionalChargesDto additional) {
 		ResponseDto response = new ResponseDto();
-		response.setData(service.deleteAddtionalCharges(addtional));
+		response.setData(service.deleteAdditionalCharges(additional));
 		return response;
 	}
 
 	@GetMapping("/additional/{addtionalId}")
-	public ResponseDto getAddtionalChargesById(@PathVariable int addtionalId) {
+	public ResponseDto getAddtionalChargesById(@PathVariable int additionalId) {
 		ResponseDto response = new ResponseDto();
-		response.setData(service.getAddtionalChargesById(addtionalId));
+		response.setData(service.getAdditionalChargesById(additionalId));
 		return response;
 	}
 }

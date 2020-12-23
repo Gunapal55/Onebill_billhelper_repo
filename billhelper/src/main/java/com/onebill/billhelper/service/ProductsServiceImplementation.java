@@ -21,67 +21,93 @@ public class ProductsServiceImplementation implements ProductsService {
 
 	@Override
 	public ProductsDto addProduct(ProductsDto product) {
-		System.out.println();
-		ProductsDto addPro = productsdao.addProduct(product);
-		if (addPro != null) {
-
-			return addPro;
-		} else {
-			throw new BillhelperException("Record already exists");
+		ProductsDto products = null;
+		try {
+			products = productsdao.addProduct(product);
+			if (products != null) {
+				return products;
+			} else {
+				throw new BillhelperException("Failed to add product with Name " + product.getProductName()
+						+ " and Type " + product.getProductType()
+						+ ", Duplicate product may exisits try with differnt product name");
+			}
+		} catch (Exception e) {
+			throw new BillhelperException("Failed to add product with Name " + product.getProductName() + " and Type "
+					+ product.getProductType() + " Duplicate product may exisits try with differnt product name");
 		}
 	}
 
 	@Override
-	public ProductsDto removeProduct(ProductsDto product) {
+	public ProductsDto removeProduct(int productId) {
 
-		ProductsDto remPro = productsdao.removeProduct(product);
-		if (remPro != null) {
+		ProductsDto remPro = null;
+		try {
+			remPro = productsdao.removeProduct(productId);
+			if (remPro != null) {
 
-			return remPro;
+				return remPro;
 
-		} else {
-			throw new BillhelperException("No matching data found to remove");
-
+			} else {
+				throw new BillhelperException("Failed to remove the requested product");
+			}
+		} catch (Exception e) {
+			throw new BillhelperException(
+					"Unable to remove the prduct with id: " + productId + " please ensure you have entered proper ID");
 		}
 	}
 
 	@Override
 	public ProductsDto updateProduct(ProductsDto product) {
-		ProductsDto updPro = productsdao.updateProduct(product);
-		if (updPro != null) {
+		ProductsDto updPro = null;
+		try {
+			updPro = productsdao.updateProduct(product);
 
-			return updPro;
+			if (updPro != null) {
+				return updPro;
 
-		} else {
-			throw new BillhelperException("No matching record found for update");
-
+			} else {
+				throw new BillhelperException(
+						"Unable to update the requested product with id of " + product.getProductId() + " Name "
+								+ product.getProductName() + " and Type of " + product.getProductType());
+			}
+		} catch (Exception e) {
+			throw new BillhelperException("Unable to update the requested product with id of " + product.getProductId()
+					+ " Name " + product.getProductName() + " and Type of " + product.getProductType());
 		}
 	}
 
 	@Override
 	public List<ProductsDto> getAllProduct() {
-		List<ProductsDto> proList = productsdao.getAllProduct();
-		if (proList != null) {
 
-			return proList;
+		List<ProductsDto> proList = null;
+		try {
+			proList = productsdao.getAllProduct();
+			if (proList != null) {
 
-		} else {
-			throw new BillhelperException("No products found");
+				return proList;
 
+			} else {
+				throw new BillhelperException("Product list is empty!!");
+			}
+		} catch (Exception e) {
+			throw new BillhelperException("Please add new products to display list is empty");
 		}
 	}
 
 	@Override
 	public ProductsDto getProductById(int productId) {
-		ProductsDto getPro = productsdao.getProductById(productId);
-		if (getPro != null) {
 
-			return getPro;
+		ProductsDto getPro = null;
+		try {
+			getPro = productsdao.getProductById(productId);
+			if (getPro != null) {
+				return getPro;
+			} else {
+				throw new BillhelperException("No matching product for id: " + productId+" please enter vaild id ");
 
-		} else {
-			throw new BillhelperException("No matching data found to fetch");
-
+			}
+		} catch (Exception e) {
+			throw new BillhelperException("No matching product for id: " + productId+" please enter vaild id ");
 		}
 	}
-
 }

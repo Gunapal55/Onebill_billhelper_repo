@@ -1,9 +1,12 @@
 package com.onebill.billhelper.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.onebill.billhelper.entity.Bundle;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +25,6 @@ public class ProductsDto implements Serializable {
 	
 	private String productType;
 	
+	private List<Bundle> bundle = new ArrayList<Bundle>();
 
 }

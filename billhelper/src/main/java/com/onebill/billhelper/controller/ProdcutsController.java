@@ -21,7 +21,7 @@ import com.onebill.billhelper.service.ProductsService;
 @RequestMapping("/product")
 public class ProdcutsController {
 
-	@Autowired
+	@Autowired	
 	private ProductsService service;
 
 	@ResponseBody
@@ -38,11 +38,12 @@ public class ProdcutsController {
 		response.setData(service.updateProduct(product));
 		return response;
 	}
-
-	@DeleteMapping
-	public ResponseDto removeProduct(@RequestBody ProductsDto product) {
-		ResponseDto response = new ResponseDto();
-		response.setData(service.removeProduct(product));
+	
+	@DeleteMapping("/{productId}")
+	public ResponseDto removeProduct(@PathVariable int productId) {
+		System.out.println(productId);
+		ResponseDto response = new ResponseDto();	
+		response.setData(service.removeProduct(productId));
 		return response;
 
 	}
@@ -57,6 +58,7 @@ public class ProdcutsController {
 
 	@GetMapping("/{productId}")
 	public ResponseDto getProductById(@PathVariable int productId) {
+		
 		ResponseDto response = new ResponseDto();
 		response.setData(service.getProductById(productId));
 		return response;

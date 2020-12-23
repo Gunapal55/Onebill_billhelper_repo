@@ -146,7 +146,7 @@ public class BundleDaoTestStub implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto addAddtionalCharges(AdditionalChargesDto addtional) {
+	public AdditionalChargesDto addAdditionalCharges(AdditionalChargesDto additional) {
 		AdditionalChargesDto dto = new AdditionalChargesDto();
 		dto.setChargeId(1);
 		dto.setChargeType("Installation charges");
@@ -156,7 +156,7 @@ public class BundleDaoTestStub implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto updateAddtionalCharges(AdditionalChargesDto addtional) {
+	public AdditionalChargesDto updateAdditionalCharges(AdditionalChargesDto additional) {
 		AdditionalChargesDto dto = new AdditionalChargesDto();
 		dto.setChargeId(1);
 		dto.setChargeType("Installation charges");
@@ -166,12 +166,12 @@ public class BundleDaoTestStub implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto deleteAddtionalCharges(AdditionalChargesDto addtional) {
-		return addtional;
+	public AdditionalChargesDto deleteAdditionalCharges(AdditionalChargesDto additional) {
+		return additional;
 	}
 
 	@Override
-	public AdditionalChargesDto getAddtionalChargesById(int addtionalId) {
+	public AdditionalChargesDto getAdditionalChargesById(int additionalId) {
 		AdditionalChargesDto dto = new AdditionalChargesDto();
 		dto.setChargeId(1);
 		dto.setChargeType("Installation charges");

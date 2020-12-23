@@ -13,7 +13,7 @@ public interface ProductsService {
 
 	public ProductsDto updateProduct(ProductsDto product);
 
-	public ProductsDto removeProduct(ProductsDto product);
+	public ProductsDto removeProduct(int productId);
 
 	public List<ProductsDto> getAllProduct();
 

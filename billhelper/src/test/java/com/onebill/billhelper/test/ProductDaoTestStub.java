@@ -31,10 +31,10 @@ public class ProductDaoTestStub implements ProductsDao {
 			return dto;
 	}
 	
-	@Override
-	public ProductsDto removeProduct(ProductsDto product) {
-		return product;
-	}
+//	@Override
+//	public ProductsDto removeProduct(int productId) {
+//		return this.productId;
+//	}
 
 	@Override
 	public List<ProductsDto> getAllProduct() {
@@ -59,6 +59,12 @@ public class ProductDaoTestStub implements ProductsDao {
 		dto3.setProductName("Apple");
 		dto3.setProductType("Technology");
 		return dto3;
+	}
+
+	@Override
+	public ProductsDto removeProduct(int productId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

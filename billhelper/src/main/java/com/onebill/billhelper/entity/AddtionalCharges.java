@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -38,6 +40,7 @@ public class AddtionalCharges {
 	private String requiredDocuments;
 
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "bundle_id")
 	private Bundle bundle;
 

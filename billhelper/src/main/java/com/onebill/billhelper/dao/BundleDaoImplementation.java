@@ -85,7 +85,6 @@ public class BundleDaoImplementation implements BundleDao {
 		}.getType();
 		List<BundleDto> dto = mapper.map(bundle, listType);
 		return dto;
-
 	}
 
 	@Override
@@ -226,7 +225,7 @@ public class BundleDaoImplementation implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto addAddtionalCharges(AdditionalChargesDto addtional) {
+	public AdditionalChargesDto addAdditionalCharges(AdditionalChargesDto addtional) {
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transcation = manager.getTransaction();
 		transcation.begin();
@@ -242,7 +241,7 @@ public class BundleDaoImplementation implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto updateAddtionalCharges(AdditionalChargesDto addtional) {
+	public AdditionalChargesDto updateAdditionalCharges(AdditionalChargesDto addtional) {
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		AddtionalCharges addtional2 = manager.find(AddtionalCharges.class, addtional.getChargeId());
@@ -256,7 +255,7 @@ public class BundleDaoImplementation implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto deleteAddtionalCharges(AdditionalChargesDto addtional) {
+	public AdditionalChargesDto deleteAdditionalCharges(AdditionalChargesDto addtional) {
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		AddtionalCharges delete = manager.find(AddtionalCharges.class, addtional.getChargeId());
@@ -273,7 +272,7 @@ public class BundleDaoImplementation implements BundleDao {
 	}
 
 	@Override
-	public AdditionalChargesDto getAddtionalChargesById(int addtionalId) {
+	public AdditionalChargesDto getAdditionalChargesById(int addtionalId) {
 		EntityManager manager = factory.createEntityManager();
 		AddtionalCharges addtional = manager.find(AddtionalCharges.class, addtionalId);
 		AdditionalChargesDto dto = new AdditionalChargesDto();

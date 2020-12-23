@@ -52,15 +52,18 @@ public class ProductsDaoImplementation implements ProductsDao {
 	}
 
 	@Override
-	public ProductsDto removeProduct(ProductsDto product) {
+	public ProductsDto removeProduct(int productId) {
+		System.out.println(productId);
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
-		Products deletedProduct = manager.find(Products.class, product.getProductId());
+		Products deletedProduct = manager.find(Products.class, productId);
+		ProductsDto dto = new ProductsDto();
+		BeanUtils.copyProperties(deletedProduct, dto);
 		if (deletedProduct != null) {
 			manager.remove(deletedProduct);
 			manager.getTransaction().commit();
 			manager.close();
-			return product;
+			return dto;
 		} else {
 			manager.close();
 			factory.close();
@@ -90,4 +93,6 @@ public class ProductsDaoImplementation implements ProductsDao {
 		return dto;
 
 	}
+
+	
 }
