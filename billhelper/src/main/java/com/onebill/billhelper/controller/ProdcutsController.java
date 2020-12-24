@@ -18,7 +18,7 @@ import com.onebill.billhelper.service.ProductsService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProdcutsController {
 
 	@Autowired	
@@ -48,7 +48,7 @@ public class ProdcutsController {
 
 	}
 
-	@GetMapping("/products")
+	@GetMapping
 	public ResponseDto getAllProducts() {
 		ResponseDto response = new ResponseDto();
 		response.setData(service.getAllProduct());
@@ -64,5 +64,5 @@ public class ProdcutsController {
 		return response;
 
 	}
-
+	
 }

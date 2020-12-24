@@ -21,9 +21,9 @@ import com.onebill.billhelper.service.BundleService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/product/bundle")
+@RequestMapping("products/bundles")
 public class BundleController {
-
+	
 	@Autowired
 	private BundleService service;
 
@@ -50,7 +50,7 @@ public class BundleController {
 
 	}
 
-	@GetMapping("/bundles")
+	@GetMapping
 	public ResponseDto getAllBundles() {
 		ResponseDto response = new ResponseDto();
 		response.setData(service.getAllBundle());
@@ -153,7 +153,7 @@ public class BundleController {
 		return response;
 	}
 
-	@GetMapping("/additional/{addtionalId}")
+	@GetMapping("/additional/{additionalId}")
 	public ResponseDto getAddtionalChargesById(@PathVariable int additionalId) {
 		ResponseDto response = new ResponseDto();
 		response.setData(service.getAdditionalChargesById(additionalId));

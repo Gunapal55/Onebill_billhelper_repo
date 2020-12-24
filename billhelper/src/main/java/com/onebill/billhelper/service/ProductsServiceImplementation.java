@@ -103,11 +103,12 @@ public class ProductsServiceImplementation implements ProductsService {
 			if (getPro != null) {
 				return getPro;
 			} else {
-				throw new BillhelperException("No matching product for id: " + productId+" please enter vaild id ");
+				throw new BillhelperException("No matching product for id: " + productId + " please enter vaild id ");
 
 			}
 		} catch (Exception e) {
-			throw new BillhelperException("No matching product for id: " + productId+" please enter vaild id ");
+			throw new BillhelperException("No matching product for id: " + productId + " please enter vaild id ");
 		}
 	}
+
 }

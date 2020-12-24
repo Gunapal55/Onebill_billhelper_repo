@@ -67,6 +67,14 @@ public class ProductDaoTestStub implements ProductsDao {
 		return null;
 	}
 
+
+
+//	@Override
+//	public ProductsDto removeProduct(int productId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	
 	
 	
